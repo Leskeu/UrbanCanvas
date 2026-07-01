@@ -32,7 +32,7 @@
 		180E79612FF5014A00D20679 = {
 			isa = PBXGroup;
 			children = (
-				180E796C2FF5014A00D20679 /* UrbanCanvas */,
+				180E79822FF50D5100D20679 /* New Group */,
 				180E796B2FF5014A00D20679 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +43,14 @@
 				180E796A2FF5014A00D20679 /* UrbanCanvas.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		180E79822FF50D5100D20679 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				180E796C2FF5014A00D20679 /* UrbanCanvas */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
