@@ -59,15 +59,24 @@ struct DetailListView: View {
                     Text(artist.adress)
                         .font(.footnote)
                 }
-                Map(position: $cameraPosition)
+                Map(position: $cameraPosition) {
+                    Annotation("",coordinate: artist.coordinate, anchor: .center) {
+                        Image(artist.image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .cornerRadius(200)
+                    }
+                }
                     .onAppear {
                         let marseille = CLLocationCoordinate2D(latitude: 43.296434, longitude: 5.377840)
-                        let marseilleSpan = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+                        let marseilleSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
                         let marseilleRegion = MKCoordinateRegion(center: marseille, span: marseilleSpan)
                         cameraPosition = .region(marseilleRegion)
                     } .frame(width : 358, height: 157)
                     .cornerRadius(26)
                     .padding(.vertical)
+                    .colorScheme(.dark)
                 
             } .padding(.horizontal, 24)
             

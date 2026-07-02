@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ListRowView: View {
-    var artists : [Artist]
+    var artist : Artist
     var body: some View {
-        NavigationStack {
-            List(artists) { artist in
                 HStack {
                     Image(artist.image)
                         .resizable()
@@ -27,11 +25,8 @@ struct ListRowView: View {
                     }
                 }
             }
-            .navigationTitle("Liste des Street Arts")
         }
-    }
-}
-
+   
 #Preview {
-    ListRowView(artists: artists)
+    ListRowView(artist: artists[0])
 }
