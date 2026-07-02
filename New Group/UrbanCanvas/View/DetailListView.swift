@@ -69,8 +69,8 @@ struct DetailListView: View {
                     }
                 }
                     .onAppear {
-                        let marseille = CLLocationCoordinate2D(latitude: 43.296434, longitude: 5.377840)
-                        let marseilleSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        let marseille = artist.coordinate
+                        let marseilleSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
                         let marseilleRegion = MKCoordinateRegion(center: marseille, span: marseilleSpan)
                         cameraPosition = .region(marseilleRegion)
                     } .frame(width : 358, height: 157)
