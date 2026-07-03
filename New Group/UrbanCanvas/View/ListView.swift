@@ -8,46 +8,19 @@
 import SwiftUI
 
 struct ListView: View {
-    @State private var selectedFilter: ArtType = .tous
-    @State private var selectedView = 0
-    var filteredArtists: [Artist] {
-        
-        if selectedFilter == .tous {
-            return artists
-        }
-        
-        return artists.filter {
-            $0.artType == selectedFilter
-        }
-    }
-    
-    init() {
-                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.orange
-                UISegmentedControl.appearance().setTitleTextAttributes(
-                    [.foregroundColor: UIColor.white],
-                    for: .selected
-                )
-                UISegmentedControl.appearance().setTitleTextAttributes(
-                    [.foregroundColor: UIColor.orange],
-                    for: .normal
-                )
-            }
+    let artists : [Artist]
     
     var body: some View {
-        NavigationStack {
-            List(filteredArtists) { artist in
+            List(artists) { artist in
                 NavigationLink {
                     DetailListView(artist: artist)
                 } label : {
                     ListRowView(artist: artist)
                 }
-            }
-            .navigationTitle("Liste des Street Arts")
-            
-            }
+            } .navigationTitle("Liste des Street Arts")
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
-
 #Preview {
-    ListView()
+    ListView(artists:artists)
 }

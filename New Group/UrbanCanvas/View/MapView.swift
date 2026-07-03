@@ -11,23 +11,24 @@ import MapKit
 struct MapView: View {
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var selectedArtist: Artist?
-    var artist: Artist
+    var artists: [Artist]
     var body: some View {
         Map(position: $cameraPosition) {
             ForEach(artists) { artist in
                 Annotation("",coordinate: artist.coordinate, anchor: .center) {
-                    Button {
-                        selectedArtist = artist
-                    } label: {
-                        Image(artist.image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 40, height: 40)
-                            .cornerRadius(200)
-                    }
+                        Button {
+                            selectedArtist = artist
+                        } label: {
+                            Image(artist.image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 40, height: 40)
+                                .cornerRadius(200)
+                        }
                 }
             }
-        } .sheet(item: $selectedArtist) { artist in
+        }
+    .sheet(item: $selectedArtist) { artist in
             ArtistSheet(artist: artist)
                 .presentationDetents([.fraction(0.50), .large])
                         .presentationDragIndicator(.visible)
@@ -43,5 +44,5 @@ struct MapView: View {
     }
 }
 #Preview {
-    MapView(artist: artists[0])
+    MapView(artists:artists)
 }

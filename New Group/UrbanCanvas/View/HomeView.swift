@@ -10,12 +10,14 @@ import SwiftUI
 struct HomeView: View {
     @State private var selectedView = 0
     @State private var selectedFilter: ArtType = .tous
+    @State private var isPopoverPresented = false
+    @State private var showPopover = false
+    
     var filteredArtists: [Artist] {
         
         if selectedFilter == .tous {
             return artists
         }
-        
         return artists.filter {
             $0.artType == selectedFilter
         }
@@ -24,75 +26,64 @@ struct HomeView: View {
         NavigationStack {
             ZStack {
                 if selectedView == 0 {
-                    ListView()
+                    ListView(artists: filteredArtists)
                 } else {
-                    MapView(artist: artists[0])
+                    MapView(artists: filteredArtists)
                 }
-            }
-            .overlay(alignment: .top) {
-                Picker("", selection: $selectedView) {
-                    Text("Liste").tag(0)
-                    Text("Carte").tag(1)
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-                .padding(.top, 8)
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
+                ToolbarItem(placement: .automatic) {
+                        Picker("", selection: $selectedView) {
+                            Text("Liste").tag(0)
+                            Text("Carte").tag(1)
+                        }
+                        .pickerStyle(.segmented)
+                }
+                ToolbarItem(placement: .automatic) {
+                    Button {
+                        showPopover.toggle()
+                    }label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                    } .popover(isPresented: $showPopover) {
                         VStack {
-                            Text("Liste des filtres")
-                            Text("Choisissez une type d'art")
+                            Text("Listes des filtres")
+                                .bold()
+                                .font(.title)
+                            Text("Choisissez un type d'art")
                             ForEach(ArtType.allCases) { type in
-                                Button {
+                                Button{
                                     selectedFilter = type
-                                } label: {
+                                }label: {
                                     if selectedFilter == type {
-                                        Label(type.rawValue, systemImage: "checkmark")
+                                        Text(type.rawValue)
+                                            .foregroundStyle(.mainOrange)
+                                            .bold()
+                                            .padding(.horizontal, 60)
+                                            .padding(.vertical, 20)
+                                            .background(.thinMaterial)
+                                            .cornerRadius(40)
+                                            .font(.title2)
                                     } else {
                                         Text(type.rawValue)
+                                            .foregroundStyle(.mainText)
+                                            .bold()
+                                            .padding(.horizontal, 60)
+                                            .padding(.vertical, 20)
+                                            .background(.thinMaterial)
+                                            .cornerRadius(40)
+                                            .font(.title2)
                                     }
                                 }
                             }
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .font(.title2)
+                        }.frame(width: 300, height: 500)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                        .presentationCompactAdaptation(.popover)
                     }
-                    
                 }
             }
         }
-        //        NavigationStack {
-        //            VStack {
-        //
-        //                Picker("", selection: $selectedView) {
-        //                    Text("Liste").tag(0)
-        //                    Text("Carte").tag(1)
-        //                }
-        //                .pickerStyle(.segmented)
-        //                .padding(.horizontal)
-        //
-        //                Group {
-        //                    switch selectedView {
-        //                    case 0:
-        //                        ListView()
-        //                    case 1:
-        //                        MapView(artist: artists[0])
-        //                    default:
-        //                        EmptyView()
-        //                    }
-        //                }
-        //            }
-        //            .toolbar {
-        //                ToolbarItem(placement: .topBarTrailing) {
-        //                    // Ton bouton filtre si tu le veux pour les deux vues
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
     }
 }
 #Preview {
