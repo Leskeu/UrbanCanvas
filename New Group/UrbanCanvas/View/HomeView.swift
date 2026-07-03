@@ -10,6 +10,16 @@ import SwiftUI
 struct HomeView: View {
     @State private var selectedView = 0
     @State private var selectedFilter: ArtType = .tous
+    var filteredArtists: [Artist] {
+        
+        if selectedFilter == .tous {
+            return artists
+        }
+        
+        return artists.filter {
+            $0.artType == selectedFilter
+        }
+    }
     var body: some View {
         NavigationStack {
             ZStack {
