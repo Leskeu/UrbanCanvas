@@ -36,3 +36,13 @@ enum ArtType: String, CaseIterable, Identifiable {
     case calligraphie = "Calligraphie"
     
 }
+
+struct DetailArtist : Identifiable {
+    var id = UUID()
+    var name : String
+    var age : String
+    var origin : String
+    var style : String
+    var picture : String
+    var url : String
+}
