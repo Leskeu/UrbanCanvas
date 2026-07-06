@@ -44,6 +44,7 @@ struct HomeView: View {
                         showPopover.toggle()
                     }label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
+                            .foregroundStyle(.mainText)
                     } .popover(isPresented: $showPopover) {
                         VStack {
                             Text("Listes des filtres")
@@ -76,6 +77,7 @@ struct HomeView: View {
                                 }
                             }
                         }.frame(width: 300, height: 500)
+                            .padding()
                             .background(Color.white)
                             .cornerRadius(10)
                             .shadow(radius: 10)
