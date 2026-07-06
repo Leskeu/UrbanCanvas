@@ -12,7 +12,6 @@ struct HomeView: View {
     @State private var selectedFilter: ArtType = .tous
     @State private var isPopoverPresented = false
     @State private var showPopover = false
-    
     var filteredArtists: [Artist] {
         
         if selectedFilter == .tous {
