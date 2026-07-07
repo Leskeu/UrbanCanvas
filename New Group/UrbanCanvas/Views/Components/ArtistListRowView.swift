@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListRowView: View {
+struct ArtistListRowView: View {
     var artist : Artist
     var body: some View {
                 HStack {
@@ -28,5 +28,5 @@ struct ListRowView: View {
         }
    
 #Preview {
-    ListRowView(artist: artists[0])
+    ArtistListRowView(artist: artists[0])
 }

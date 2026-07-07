@@ -17,7 +17,7 @@ struct GridView: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns:columns, spacing: 20) {
                     ForEach(detailartists) { artist in
-                        ArtistCard(detailArtist: artist)
+                        ArtistCardView(detailArtist: artist)
                     }
                 }
             } .padding(.horizontal)
