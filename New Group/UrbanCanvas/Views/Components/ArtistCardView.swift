@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArtistCard: View {
+struct ArtistCardView: View {
     
    @State var detailArtist : DetailArtist
     
@@ -54,5 +54,5 @@ struct ArtistCard: View {
 }
 
 #Preview {
-    ArtistCard(detailArtist: detailartists[0])
+    ArtistCardView(detailArtist: detailartists[0])
     }

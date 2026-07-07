@@ -26,7 +26,7 @@ struct HomeView: View {
         NavigationStack {
             ZStack {
                 if selectedView == 0 {
-                    ListView(artists: filteredArtists)
+                    ArtistListView(artists: filteredArtists)
                 } else {
                     MapView(artists: filteredArtists)
                 }

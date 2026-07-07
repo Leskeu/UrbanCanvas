@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListView: View {
+struct ArtistListView: View {
     let artists : [Artist]
     
     var body: some View {
@@ -20,12 +20,12 @@ struct ListView: View {
                 NavigationLink {
                     DetailListView(artist: artist)
                 } label : {
-                    ListRowView(artist: artist)
+                    ArtistListRowView(artist: artist)
                 }
             }
         } .listStyle(.plain)
     }
 }
 #Preview {
-    ListView(artists:artists)
+    ArtistListView(artists:artists)
 }
