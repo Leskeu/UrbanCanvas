@@ -58,16 +58,14 @@ struct HomeView: View {
                                     if selectedFilter == type {
                                         Text(type.rawValue)
                                             .foregroundStyle(.mainOrange)
-                                            .bold()
                                             .padding(.horizontal, 60)
                                             .padding(.vertical, 20)
                                             .background(.thinMaterial)
                                             .cornerRadius(40)
-                                            .font(.title2)
+                                            .font(.system(size:17))
                                     } else {
                                         Text(type.rawValue)
                                             .foregroundStyle(.mainText)
-                                            .bold()
                                             .padding(.horizontal, 60)
                                             .padding(.vertical, 20)
                                             .background(.thinMaterial)

@@ -23,7 +23,7 @@ struct MapView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 40, height: 40)
-                                .cornerRadius(200)
+                                .clipShape(.circle)
                         }
                 }
             }
