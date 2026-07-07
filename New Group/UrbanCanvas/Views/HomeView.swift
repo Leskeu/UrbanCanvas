@@ -39,7 +39,8 @@ struct HomeView: View {
                         }
                         .pickerStyle(.segmented)
                 }
-                ToolbarItem(placement: .automatic) {
+                ToolbarSpacer()
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showPopover.toggle()
                     }label: {
